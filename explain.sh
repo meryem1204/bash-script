@@ -18,6 +18,6 @@ find $file -mindepth 1 -maxdepth 1 -type d | wc -l
 echo "Verilen dizinin sahibi"
 stat -c '%U' $file 
 echo "Verilen dizindeki dosyaların uzantı listesi"
-find $file -type f -name "*.*" | sed -n 's/.*\.//p' | sort | uniq
+find "$file" -type f -name "*.*" | awk -F. '{print $NF}' | sort | uniq
  
 
